@@ -42,7 +42,7 @@
 // Console.Write("Input int number ");
 // int num = Convert.ToInt32(Console.ReadLine());
 
-// int div = num %= 2;
+// int div = num % 2;
 
 // if(div > 0)
 // {
@@ -53,4 +53,22 @@
 //     Console.WriteLine("Number is even integer");
 // }
 
-// 
+// Задача 4. Напишите программу, которая на вход принимает число (N), а на выходе показывает все чётные числа от 1 до N.
+
+// Console.Write("Input number ");
+// int num = Convert.ToInt32(Console.ReadLine());
+// int count = 1;
+
+// while(count <= num)
+// {
+//     if((count % 2) < 1)
+//     {
+//         Console.Write(count + " ");
+//         count++;
+//     }
+//     else
+//     {
+//         count++;
+//     }
+    
+// }
