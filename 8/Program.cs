@@ -150,124 +150,131 @@ void Show2DArray(int[,] array)
 //Задача 4. Сформируйте трёхмерный массив из неповторяющихся двузначных чисел.
 // Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
 
-// void Mix3DArray(int[,,] array)
-// {
-//     for(int i = 0; i < array.GetLength(0); i++)
-//     {
-//         for(int j = 0; j < array.GetLength(1); j++)
-//         {
-//             for(int k = 0; k < array.GetLength(2); k++)              
-//             {
-//                 int randomI = new Random().Next(0, array.GetLength(0) -1);
-//                 int randomJ = new Random().Next(0, array.GetLength(1) -1);
-//                 int randomK = new Random().Next(0, array.GetLength(2) -1);
-//                 int temp = array[i,j,k];
-//                 array[i,j,k] = array[randomI,randomJ,randomK];
-//                 array[randomI,randomJ,randomK] = temp;
+void Mix3DArray(int[,,] array)
+{
+    for(int i = 0; i < array.GetLength(0); i++)
+    {
+        for(int j = 0; j < array.GetLength(1); j++)
+        {
+            for(int k = 0; k < array.GetLength(2); k++)              
+            {
+                int randomI = new Random().Next(0, array.GetLength(0) -1);
+                int randomJ = new Random().Next(0, array.GetLength(1) -1);
+                int randomK = new Random().Next(0, array.GetLength(2) -1);
+                int temp = array[i,j,k];
+                array[i,j,k] = array[randomI,randomJ,randomK];
+                array[randomI,randomJ,randomK] = temp;
 
-//             }
-//         }
-//     }
-// }
+            }
+        }
+    }
+}
 
-// int[,,] Create3DArray()
-// {
-//     Console.Write("Input number of rows: ");
-//     int rows = Convert.ToInt32(Console.ReadLine());
-//     Console.Write("Input number of columns: ");
-//     int columns = Convert.ToInt32(Console.ReadLine());
-//     Console.Write("Input number of page: ");
-//     int page = Convert.ToInt32(Console.ReadLine());
-    
-//     if(rows * columns * page > 100)
-//         Console.WriteLine("There will be repetitions in the numbers");
-    
-//     int[,,] array = new int[rows, columns, page];
-//     int counter = 0;
-
-//     for(int i = 0; i < rows; i++)    
-//         for(int j = 0; j < columns; j++)
-//             for(int k = 0; k < page; k++)
-//             {
-//                 array[i,j,k] = 10 + counter;
-//                 if(counter < 89)
-//                     counter++;
-//                 else
-//                     counter = 0;
-//             }   
-//     return array;
-
-// }
-
-// void Show3DArray(int[,,] array)
-// {
-//     for(int i = 0; i < array.GetLength(0); i++)
-//     {
-//         for(int j = 0; j < array.GetLength(1); j++)
-//         {
-//             for(int k = 0; k < array.GetLength(2); k++)              
-//             {
-//                 Console.Write($"{array[i,j,k]} ({i},{j},{k})" + "\t");
-//             }
-//             Console.WriteLine();
-//         }
-//         Console.WriteLine();
-//     }
-//     Console.WriteLine();
-// }
-
-// int[,,] userArray = Create3DArray();
-
-// Mix3DArray(userArray);
-
-// Show3DArray(userArray);
-
-
-
-//Задача 5. Напишите программу, которая заполнит спирально массив 4 на 4.
-
-int[,] SpiralArray()
+int[,,] Create3DArray()
 {
     Console.Write("Input number of rows: ");
     int rows = Convert.ToInt32(Console.ReadLine());
     Console.Write("Input number of columns: ");
     int columns = Convert.ToInt32(Console.ReadLine());
-
-    int[,] array = new int[rows, columns];
-    int i = 0;
-    int j = 0;
-    int startI = 0;
-    int startJ = 0;
-    int finI = 0;
-    int finJ = 0;
+    Console.Write("Input number of page: ");
+    int page = Convert.ToInt32(Console.ReadLine());
     
-    for(int k = 1; k <= rows * columns; k++)
+    while(rows * columns * page > 100)
     {
-        array[i,j] = k;
-        if(j < columns - 1 - finJ && i == startI)
-            j++;
-        else
-        {
-            if(j == columns - 1 - finJ && i < rows - 1 - finI)
-                i++;
-            else
-            {
-                if(i == rows - 1 - finI && j > startJ)
-                    j--;
-                else                             
-                    i--;
-            }
-        }
-        if(i == startI + 1 && j == startJ && startJ != columns - 1 - finJ)
-        {
-            startI++;
-            startJ++;
-            finI++;
-            finJ++;
-        }
+        Console.WriteLine("There will be repetitions in the numbers, enter new values");
+        Console.Write("Input number of rows: ");
+        rows = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Input number of columns: ");
+        columns = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Input number of page: ");
+        page = Convert.ToInt32(Console.ReadLine());
     }
-    return array;  
+    int[,,] array = new int[rows, columns, page];
+    int counter = 0;
+
+    for(int i = 0; i < rows; i++)    
+        for(int j = 0; j < columns; j++)
+            for(int k = 0; k < page; k++)
+            {
+                array[i,j,k] = 10 + counter;
+                if(counter < 89)
+                    counter++;
+                else
+                    counter = 0;
+            }   
+    return array;
+
 }
 
-int[,] myArray = SpiralArray();
-Show2DArray(myArray);
+void Show3DArray(int[,,] array)
+{
+    for(int i = 0; i < array.GetLength(0); i++)
+    {
+        for(int j = 0; j < array.GetLength(1); j++)
+        {
+            for(int k = 0; k < array.GetLength(2); k++)              
+            {
+                Console.Write($"{array[i,j,k]} ({i},{j},{k})" + "\t");
+            }
+            Console.WriteLine();
+        }
+        Console.WriteLine();
+    }
+    Console.WriteLine();
+}
+
+int[,,] userArray = Create3DArray();
+
+Mix3DArray(userArray);
+
+Show3DArray(userArray);
+
+
+
+//Задача 5. Напишите программу, которая заполнит спирально массив 4 на 4.
+
+// int[,] SpiralArray()
+// {
+//     Console.Write("Input number of rows: ");
+//     int rows = Convert.ToInt32(Console.ReadLine());
+//     Console.Write("Input number of columns: ");
+//     int columns = Convert.ToInt32(Console.ReadLine());
+
+//     int[,] array = new int[rows, columns];
+//     int i = 0;
+//     int j = 0;
+//     int startI = 0;
+//     int startJ = 0;
+//     int finI = 0;
+//     int finJ = 0;
+    
+//     for(int k = 1; k <= rows * columns; k++)
+//     {
+//         array[i,j] = k;
+//         if(j < columns - 1 - finJ && i == startI)
+//             j++;
+//         else
+//         {
+//             if(j == columns - 1 - finJ && i < rows - 1 - finI)
+//                 i++;
+//             else
+//             {
+//                 if(i == rows - 1 - finI && j > startJ)
+//                     j--;
+//                 else                             
+//                     i--;
+//             }
+//         }
+//         if(i == startI + 1 && j == startJ && startJ != columns - 1 - finJ)
+//         {
+//             startI++;
+//             startJ++;
+//             finI++;
+//             finJ++;
+//         }
+//     }
+//     return array;  
+// }
+
+// int[,] myArray = SpiralArray();
+// Show2DArray(myArray);
