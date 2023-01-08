@@ -196,11 +196,8 @@ int[,,] Create3DArray()
         for(int j = 0; j < columns; j++)
             for(int k = 0; k < page; k++)
             {
-                array[i,j,k] = 10 + counter;
-                if(counter < 89)
-                    counter++;
-                else
-                    counter = 0;
+                array[i,j,k] = 10 + counter;                
+                counter++;                                   
             }   
     return array;
 
